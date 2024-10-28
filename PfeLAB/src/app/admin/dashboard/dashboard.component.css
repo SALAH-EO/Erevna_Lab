@@ -1,0 +1,71 @@
+@import "~bootstrap/dist/css/bootstrap.css" ;
+
+table{
+	margin: auto;
+	margin-top: 100px;
+	max-width: 1200px;
+	text-align: center;
+}
+
+table tr,td{
+	border : black solid 1px ; 
+	padding-right: 0;
+}
+
+thead , th{
+	background-color : darkgray;
+	border: solid black 2px;
+}
+
+
+mat-icon{
+	color : darkblue ;
+}
+
+
+
+#supp{
+	color: darkred;
+}
+
+#edit{
+	color : darkgreen;
+}
+
+#set{
+	color: skyblue;
+	float: left;
+	padding: 0;
+}
+
+
+
+
+
+.wow{
+	border: none;
+}
+
+
+.statut{
+	background-color: lightseagreen;
+	color : white;
+	letter-spacing: 1px;
+	padding: 0;
+	margin-top: 2px;
+	float: left;
+	border-radius: 5px;
+}
+
+.toast{
+	position: absolute;
+	margin: auto;
+	background-color: green !important;
+	margin-top: 100px;
+}
+
+#check{
+	margin-left: 10px;
+	padding-bottom: 5px !important;
+	zoom : 1.5 ;	
+}

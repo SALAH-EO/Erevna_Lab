@@ -1,0 +1,85 @@
+
+<div *ngIf="demandes" > <p>  {{demandes.idClient}} </p> </div>
+
+ <div #myToast class="toast align-items-center text-white bg-primary border-0 text-center" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" >
+ 
+    <div class="toast-body">
+        <mat-icon >check_circle_outline</mat-icon>
+      <strong id="check">Statut bien changé </strong>
+    </div>
+
+</div>
+
+<table class="table table-stripped">
+  
+  <thead class="text-center" >
+    <th>Date</th>
+    <th>Etablissement</th>
+    <th>Demande</th>
+    <th>Laboratoire</th>
+    <th>Statut</th>
+    <th style="border : red solid 1px ;">Montant</th>
+    <th > </th>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let demande of demandes ; let i = index "  >
+                <td> {{dates[i]}} </td>
+                <td>{{demande.Etablissement}}</td>
+                <td>{{demande.TypeDem}}</td>
+                <td>{{demande.Lab}}</td>
+                <td >
+
+                  <button class="wow" id="set" (click)="openDialog(demande.num) " >
+                    <mat-icon id="set">settings</mat-icon>
+                  </button>
+                  <p class="statut" [style.background-color]="bolor(demande.statut)" >{{demande.statut}} </p>
+                </td>
+                <td>{{demande.Montant}} DH</td>
+                <td><button class="wow tooltip-test" title="Voir PDF" (click)=topdf(demande.num)><mat-icon>remove_red_eye</mat-icon></button>
+                    <button class="wow tooltip-test" title="Supprimer"><mat-icon id="supp">delete</mat-icon></button>
+                    <button class="wow tooltip-test" title="Ajouter Resultat"><mat-icon id="edit">edit</mat-icon></button>
+                </td>
+         
+         </tr>
+
+  </tbody>
+</table>
+
+
+
+ <!--div #myToast role="alert" aria-live="assertive" aria-atomic="true" 
+ class="toast fade" data-bs-autohide="false">
+ <div class="toast-header">
+ <strong class="me-auto">Bootstrap</strong>
+ <small>11 mins ago</small>
+ <button type="button" class="btn-close" data-bs-dismiss="toast" aria- 
+ label="Close"></button>
+  </div>
+  <div class="toast-body">
+  Hello, world! This is a toast message.
+ </div>
+ </div-->
+
+
+
+
+
+
+
+<!--div>
+  <ol>
+    <li>
+      <mat-form-field>
+        <input matInput [(ngModel)]="nom" placeholder="What's your nom?">
+      </mat-form-field>
+    </li>
+    <li>
+      <button mat-raised-button (click)="openDialog()">Pick one</button>
+    </li>
+    <br />
+    <li *ngIf="bah">
+      You chose: <p style="font-weight: bold">{{bah.nom}}</p>
+    </li>
+  </ol>
+</div-->

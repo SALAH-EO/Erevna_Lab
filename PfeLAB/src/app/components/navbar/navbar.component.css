@@ -1,0 +1,125 @@
+app-toolbar{
+    position:fixed;
+     top: 0;
+     left: 0;
+  right: 0;
+  z-index: 998;
+}
+
+.container {
+
+  background-color: #F1ECF9;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+
+
+
+
+
+.sidenav{
+    background:#F9E79F;
+    background: /*linear-gradient(0deg, #036666 0,  lightsteelblue 100%)*/ dodgerblue;
+    height:100%;
+    display: block;
+    box-shadow: 0 0 45px 0 rgba(0, 0, 0,.6);
+    margin-top: 5%;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+
+.sidenav2{
+    background:#F9E79F;
+    background: /*linear-gradient(0deg, #036666 0,  seagreen 100%)*/ darkorchid;
+    height:100%;
+    display: block;
+    box-shadow: 0 0 45px 0 rgba(0, 0, 0,.6);
+    margin-top: 5%;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+
+
+
+
+   /* .nav li> a{
+        margin: 10px 15px 0;
+        border-radius: 30px;
+        color: rgba(255,255,255,.8);
+        width: 200px;
+        display:block;
+        text-decoration: none;
+        position: relative;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color: black;
+        font-weight: bold;
+        padding: 10px 15px;
+        line-height: 1.5rem;
+        transition:all .3s ease 0s;
+    }*/
+
+
+ h5 {
+        margin: 0px 10px 0;
+        border-radius: 30px;
+        color: rgba(255,255,255,.8);
+        width: 200px;
+        display:block;
+        text-decoration: none;
+        position: relative;
+        text-transform: uppercase;
+        font-size: 13pt;
+        color: black;
+        font-weight: bold;
+        padding: 10px 15px;
+        line-height: 1.5rem;
+        transition:all .3s ease 0s;
+    }
+
+    
+    .item:hover{
+        color:rgba(11,156,49,0.6);
+        transition: all .3s ease 0s;
+    }
+
+
+    .nav .item.active>h5:before{
+        content: " ";
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        top: 17px;
+        left:-2px;
+        background: #fff;
+        border-radius: 50%;
+        
+    }
+
+
+
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+.label1{
+
+  font-size: 20px;
+  color : black !important ;
+
+}

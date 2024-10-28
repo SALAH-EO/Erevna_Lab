@@ -1,0 +1,64 @@
+
+
+<div class="col-md-12">
+
+  <div class="card card-container">
+    <svg xmlns="http://www.w3.org/2000/svg">
+  
+  <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+  
+    <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+      
+      <!-- We only want horizontal blurring. x: 100, y: 0 -->
+      
+        <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+    </filter>
+</svg>
+
+<!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
+
+<span filter-content="S">Se connecter</span>
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <form
+      [formGroup] = "form"
+      (ngSubmit)="onSubmit(form)"
+      autocomplete = "off"
+    >
+      <div class="form-group">
+      <label>Email</label>
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+      />
+      
+    </div>
+
+
+      <div class="form-group">
+      <label>Mot de Passe</label>
+      <input
+        type="password"
+        formControlName="password"
+        class="form-control"
+      />
+     
+    </div>
+
+
+      <div class="form-group" style="margin-top: 10px;">
+        <button class="btn btn-primary btn-block" type="submit">
+         se connecter 
+        </button>
+
+        <p>n'a pas de compte ?</p> <a href="/service" style="font-weight:bold;">S'incrire ici</a>
+      </div>
+     
+    </form>
+   
+  </div>
+</div>

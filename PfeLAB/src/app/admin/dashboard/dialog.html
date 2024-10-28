@@ -1,0 +1,22 @@
+
+
+<div mat-dialog-content>
+  <h4 class="text-center" style="font-family:'helvetica'">Statut Actuel du Demande</h4>
+
+ <select class="form-control" style="margin-bottom:20px; margin-top:20px;"  >
+    <option >Nouveau </option>
+    <option value="">Demande Reçu</option>
+    <option value="">demande approuvée</option>
+    <option value="">Echantillon demandé</option>
+    <option value=""> Echantillon déposé </option>
+    <option value=""> Résultat partiel </option>
+    <option value=""> Résultat final </option>
+    <option value=""> Payé </option>
+    <option value=""> Clôturé </option>
+  </select>
+ 
+</div>
+<div mat-dialog-actions>
+  <button  class="btn btn-secondary" (click)="onNoClick()">Annuler</button>
+ <button  class="btn btn-light" (mat-dialog-close)="data.animal" cdkFocusInitial >Changer</button>
+</div>

@@ -1,0 +1,26 @@
+
+
+<h1 mat-dialog-title> Statut Actuel du Demande </h1>
+<div mat-dialog-content>
+  
+
+  <!--mat-form-field>
+    <input matInput [(ngModel)]="data.color">
+  </mat-form-field-->
+
+  <div [formGroup]="form" >
+
+ <mat-form-field  >
+  <mat-select placeholder="Statut" formControlName="stat" (ngModelChange) = "change($event)">
+    <mat-option *ngFor="let stat of Stats" [value]="stat" >
+      {{stat.nom}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+ <button mat-button  (click)="confirm(this.clr)"  >Changer</button>
+</div>

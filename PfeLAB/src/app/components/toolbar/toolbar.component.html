@@ -1,0 +1,139 @@
+
+
+<mat-toolbar class="toolbar1" *ngIf="nav.visible" >
+ 
+  <mat-toolbar-row class="tab">
+<!--button mat-icon-button>
+      <mat-icon (click) = "sidenav.toggle();">search</mat-icon>
+    </button-->
+
+    
+    <h1 > <a  class="lab"  routerLink="/">éLAB</a></h1>
+    <div style="margin: auto;">
+    <a href="/" >
+    <img src="assets/IMGS/lo.png" height="50px" width="50px" class="logo">
+</a>
+</div>
+
+<div  *ngIf="loginbtn" [routerLink]="['/login']" routerLinkActive="active">
+
+    
+     <button  mat-raised-button color="primary"  style=" background-color: dodgerblue; " >
+      <mat-icon style="margin-bottom: 3px;">login</mat-icon>
+     Se connecter
+   </button>
+</div>
+
+
+<!--div  *ngIf="logoutbtn" style="margin-right: 1px;">
+
+  
+
+     <button mat-raised-button color="primary"  style="  color: black;" (click)="logout()" >
+      <mat-icon>logout</mat-icon>
+      Se déconnecter
+     </button>
+</div-->
+
+
+<div  *ngIf="logoutbtn && !admin ">
+
+<button mat-button [matMenuTriggerFor]="menu"><img src="assets/IMGS/eminem.jpg"  height="50px" width="50px" class="pfp"></button>
+<mat-menu class="menu" #menu="matMenu">
+  <button class="item" mat-menu-item [routerLink]="['/profile']">
+  <mat-icon>face</mat-icon>  
+  Profile</button>
+  <button class="item" mat-menu-item >
+  <mat-icon>edit</mat-icon>  
+  Modifier Profile</button>
+  <button class="item" mat-menu-item (click)="logout()">
+  <mat-icon>logout</mat-icon>  
+  Se déconnecter</button>
+</mat-menu>
+
+</div>
+
+<div  *ngIf="logoutbtn && admin" >
+  
+  <button mat-button [matMenuTriggerFor]="menu" style="font-weight: 900;">Admin<mat-icon style="margin-bottom: 5px ;">perm_identity</mat-icon></button>
+<mat-menu class="menu" #menu="matMenu">
+
+  <button class="item" mat-menu-item (click)="logout()">
+  <mat-icon>logout</mat-icon>  
+  Se déconnecter</button>
+</mat-menu>
+
+</div>
+
+<!--div  *ngIf="logoutbtn">
+
+
+     <button mat-raised-button color="primary"  style="  color: black;" [routerLink]="['/profile']" >
+     Profile
+     <img src="assets/IMGS/eminem.jpg"  height="25px" width="25px" class="pfp">
+     </button>
+</div-->
+
+     <!--img src="assets/IMGS/vinyl.png" height="50px" width="50px"  class="logo"-->
+
+
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="nav.visible && loginbtn">
+  <div class="container-fluid">
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+         <li class="nav-item dropdown">
+          <a  class="nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Introduction
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a  class="dropdown-item" href="#hello">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Domaines
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+
+      </ul>
+     
+    </div>
+  </div>
+</nav>
+
+
+
+
+

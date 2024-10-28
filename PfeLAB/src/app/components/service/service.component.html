@@ -1,0 +1,217 @@
+<div class="register-form">
+  <svg xmlns="http://www.w3.org/2000/svg">
+  
+  <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+  
+    <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+      
+      <!-- We only want horizontal blurring. x: 100, y: 0 -->
+      
+        <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+    </filter>
+</svg>
+
+<!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
+
+<span filter-content="S">INSCRIPTION</span>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div class="form-group">
+      <label>Nom</label>
+      <input
+        type="text"
+        formControlName="nom"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }"
+      />
+      <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
+        <div *ngIf="f['nom'].errors['required']"> nom est requis  </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Prenom</label>
+      <input
+        type="text"
+        formControlName="prenom"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }"
+      />
+      <div *ngIf="submitted && f['prenom'].errors" class="invalid-feedback">
+        <div *ngIf="f['prenom'].errors['required']">prenom est requis</div>
+      </div>
+    </div>
+
+     <div class="form-group">
+       <label>Niveau d'éducation</label>
+      <mat-form-field  class="form-control">
+  <mat-select placeholder="Choisissez votre niveau" formControlName="niveau">
+    <mat-option *ngFor="let niveau of niveaux" [value]="niveau.value" >
+      {{niveau.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+    </div>
+
+      <div class="form-group">
+       <label>Entité</label>
+      <mat-form-field  class="form-control">
+  <mat-select placeholder="Un / Plusieurs" formControlName="entity" (ngModelChange) = "selectChangeHandler($event)">
+    <mat-option *ngFor="let entity of entities" [value]="entity.value" >
+      {{entity.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+    </div>
+
+    <div class="form-group" *ngIf="groupe">
+      <label for="">Nom du Groupe</label>
+      <input
+        type="text"
+        class="form-control"
+      />
+    </div>
+
+
+   <div class="form-group">
+      <label>Etablissement</label>
+      <input
+        type="text"
+        formControlName="etablissement"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['etablissement'].errors }"
+      />
+      <div *ngIf="submitted && f['etablissement'].errors" class="invalid-feedback">
+        <div *ngIf="f['etablissement'].errors['required']"> Etablissement est requis  </div>
+      </div>
+    </div>
+
+    <div class="form-group" *ngIf="groupe">
+      <label>Encadrant</label>
+      <input
+        type="text"
+        formControlName="encadrant"
+        class="form-control"
+      />
+
+    </div>
+
+    <div class="form-group">
+      <label>Adresse</label>
+      <input
+        type="text"
+        formControlName="adresse"
+        class="form-control"
+      />
+
+    </div>
+
+    <div class="form-group">
+      <label>Mobile</label>
+      <input
+        type="text"
+        formControlName="mobile"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }"
+      />
+      <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+        <div *ngIf="f['mobile'].errors['required']">Mobile est requis</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+      />
+      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+        <div *ngIf="f['email'].errors['required']">Email est requis</div>
+        <div *ngIf="f['email'].errors['email']">Email n'est pas valide</div>
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+       <label>Domaine</label>
+      <mat-form-field  class="form-control">
+  <mat-select placeholder="Choisissez votre domaine" formControlName="domaine" >
+    <mat-option *ngFor="let domaine of domaines" [value]="domaine.value" >
+      {{domaine.value}}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <label>Mot de Passe</label>
+      <input
+        type="password"
+        formControlName="password"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+      />
+      <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+        <div *ngIf="f['password'].errors['required']">Mot de passe requis</div>
+        <div *ngIf="f['password'].errors['minlength']">
+          Mot de passe doit étre minimum 6 characteres
+        </div>
+        <div *ngIf="f['password'].errors['maxlength']">
+          Mot de passe ne doit pas excéder 40 characteres
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Confirmer Mot de Passe</label>
+      <input
+        type="password"
+        formControlName="confirmPassword"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+      />
+      <div
+        *ngIf="submitted && f['confirmPassword'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="f['confirmPassword'].errors['required']">
+          confirmation du mot de passe requis
+        </div>
+        <div *ngIf="f['confirmPassword'].errors['matching']">
+          confirmation échoué
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        formControlName="acceptTerms"
+        class="form-check-input"
+        [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }"
+      />
+      <label for="acceptTerms" class="form-check-label"
+        >J'ai lit et accepte les termes de service</label
+      >
+      <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+        vous douvez accepter les termes .
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" style="width: 140px; margin-right: 10px;">S'inscrire</button>
+      <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-danger float-right"
+        style="width: 140px; margin-left: 10px;"
+      >
+        réinitialiser
+      </button>
+    </div>
+  </form>
+  <p style="font-weight: bold;">déja inscrit ? content de te revoir <a href="/login" style="color: indigo;"> Se connecter</a></p>
+</div>

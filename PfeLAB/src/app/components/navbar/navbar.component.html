@@ -1,0 +1,156 @@
+
+
+
+<mat-sidenav-container class="container"  >
+  <mat-sidenav 
+    mode="side"
+  
+    *ngIf="loginbtn;else elseBlock"
+    [ngStyle]="{ 'width.em': sidenavWidth }"
+     [ngClass]="{'sidenav2' : etat, 'sidenav': !etat}"
+    opened="true"
+    (mouseenter)="increase()"
+    (mouseleave)="decrease()">
+
+    <mat-nav-list  *ngIf="navbar.visible" class="nav">
+
+         <mat-list-item class="item" routerLink="/" routerLinkActive="active">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 >HOME</h5>
+        </div>
+      </mat-list-item>
+
+   <!--li> <a routerLink="/service" style="font-size: 13pt;" ><i class="keyboard_arrow_right"></i> Service</a> </li-->
+
+
+  <mat-list-item class="item" routerLink="/service" routerLinkActive="active">
+        <mat-icon mat-list-icon> notes </mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 >à Propos</h5>
+        </div>
+      </mat-list-item>
+
+   <!--li> <a routerLink="/contact" style="font-size: 13pt;"><i class="fas fa-money-check-alt"></i>Contact  </a> </li-->
+
+   <mat-list-item >
+        <mat-icon mat-list-icon>face</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5>Component 2</h5>
+        </div>
+      </mat-list-item>
+
+   
+    </mat-nav-list>
+
+
+      <mat-nav-list *ngIf="!navbar.visible" class="nav">
+         <mat-list-item class="item" routerLink="/" >
+        <mat-icon mat-list-icon>face</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5>Component 2</h5>
+        </div>
+      </mat-list-item>
+
+      </mat-nav-list>
+
+
+
+  </mat-sidenav>
+
+  <ng-template #elseBlock>
+
+
+  <mat-sidenav #sidenav
+    mode="side"
+    [ngClass]="{'sidenav' : etat, 'sidenav2': !etat}"
+    [ngStyle]="{ 'width.em': sidenavWidth }"
+    opened="true"
+    (mouseenter)="increase()"
+    (mouseleave)="decrease()">
+
+
+
+
+    <mat-nav-list  class="nav">
+
+        <mat-list-item class="item" routerLink="/service" routerLinkActive="active">
+        <mat-icon mat-list-icon> notes </mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 >à Propos</h5>
+        </div>
+      </mat-list-item>
+
+   <!--li> <a routerLink="/contact" style="font-size: 13pt;"><i class="fas fa-money-check-alt"></i>Contact  </a> </li-->
+
+   <mat-list-item >
+        <mat-icon mat-list-icon>face</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5>Component 2</h5>
+        </div>
+      </mat-list-item>
+
+ <mat-list-item >
+        <mat-icon mat-list-icon>info</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5>Component 2</h5>
+        </div>
+      </mat-list-item>      
+ 
+    </mat-nav-list>
+  </mat-sidenav>
+
+</ng-template>
+
+
+     
+  <mat-sidenav-content >
+     <!--div style="height: 88vh;" class="conteneur">  </div-->
+     <app-toolbar></app-toolbar>
+     <router-outlet></router-outlet>
+      <div style="border-top: solid gray 2px; height: 100% ; ">
+   <!--  <div> <img src="assets/IMGS/W31X.gif" style="opacity: 0.2; float: left; "> </div> -->
+      <div style="padding: 2; margin-top: 50px;"><h4>Contact : 066666</h4>
+          <h4>Email : @@@@</h4>
+          <h4>Membres : ...... <br>
+                       ...... <br>
+                       ...... </h4>
+          <h4> MERCI </h4>
+
+         
+     </div>
+   </div>
+   </mat-sidenav-content>
+
+
+
+</mat-sidenav-container>
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

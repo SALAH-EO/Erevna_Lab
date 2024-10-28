@@ -1,0 +1,92 @@
+@import "~bootstrap/dist/css/bootstrap.css" ;
+
+
+
+button{
+  font-family: sans-serif !important;
+  border-radius: 5px;
+
+}
+
+.toolbar1 {
+    background-color: transparent;
+    height: 80px;
+    background: linear-gradient(to bottom ,  darkgray ,  transparent   );
+    position: fixed;
+}
+
+.navbar {
+        margin-top: 60px;
+          position: absolute;
+        width: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+  }
+
+
+
+
+
+
+ 
+.lab{
+
+  font-family: 'Brush Script MT', cursive;
+  font-size: 50px;
+  color: black;
+  text-decoration: none !important;
+}
+
+
+.logo {
+
+  /*margin-left : 900px;*/ 
+  border-radius: 30px;
+}
+
+
+.logo:hover {
+  zoom : 2.0
+}
+
+
+.logo {
+
+  display: block;
+  border-radius: 30px;
+   box-shadow:  -2px 2px #968d8d ,-6px 7px 7px #282828;
+
+}
+
+.pfp{
+   border-radius: 60px;
+   box-shadow:  -2px 2px 10px black;
+}
+
+
+.nav-item{
+  margin-right: 40px;
+}
+
+#navbarDropdown{
+
+  font-weight: bolder;
+  zoom : 1.5 ;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+
+::ng-deep .menu{
+  margin-top: 5px;
+  margin-right: 10px;
+  background-color: dodgerblue;
+ }
+
+.item{
+ font-weight: bold;
+ border-bottom: 1px black dotted  ;
+ }

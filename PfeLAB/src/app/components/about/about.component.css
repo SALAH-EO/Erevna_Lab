@@ -1,0 +1,26 @@
+*{
+
+}
+
+.about1container {
+ 
+ background: #036666;
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    font-family: Georgia;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 30%;
+    color: black;
+    width: 80%;
+}
+.logo {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+  box-shadow: -3px 3px #968d8d;
+}

@@ -1,0 +1,414 @@
+
+
+<div class="container">
+<div class="backend">    
+<!-- Nav pills -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="#create">Ajouter Demande</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#read">Statut d'une demande</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#confirm">Confirmer Demande</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="pill" href="#delete"   fragment="delete">Supprimer Demande</a>
+      </li>
+  </ul>
+  
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <br>
+    <div class="tab-pane container active" id="create">
+       <svg xmlns="http://www.w3.org/2000/svg">
+  
+  <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+  
+    <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+      
+      <!-- We only want horizontal blurring. x: 100, y: 0 -->
+      
+        <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+    </filter>
+</svg>
+
+<!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
+
+<span filter-content="S">AJOUTER DEMANDE</span>
+      <div class="register-form">
+ 
+  <form [formGroup]="form" (ngSubmit)="postdata(form)" >
+
+<div class="row">
+
+    <div class="col" >
+
+      <label>Nom</label>
+      <input
+        type="text"
+        formControlName="nom"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }"
+      />
+      <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
+        <div *ngIf="f['nom'].errors['required']"> champ est requis  </div>
+      </div>
+    </div>
+
+    <div class="col" >
+      <label for="">Type</label>
+
+            <select  placeholder="Le type" name="machine" formControlName="TypeDem"  class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['TypeDem'].errors }">
+
+               <option *ngFor="let type of types" [value]="type.value">
+                 {{type.value}}
+               </option>
+              </select>
+    </div>
+
+    <div class="col">
+       <label for="">Laboratoire</label>
+
+            <select  placeholder="Le type" name="machine" formControlName="Lab"  class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['Lab'].errors }">
+
+               <option *ngFor="let lab of labs" [value]="lab.value">
+                 {{lab.value}}
+               </option>
+              </select>
+    </div>
+
+    <!--div class="col" >
+       <label>Machine Voulu</label>
+      <mat-form-field  class="form-control" >
+  <mat-select placeholder="Choisissez une machine" formControlName="machine">
+    <mat-option *ngFor="let machine of machines" [value]="machine.value" >
+      {{machine.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+    </div-->
+
+    <!--div class="col">
+        <label for="">Machine voulu</label>
+
+            <select  placeholder="une machine" name="machine" formControlName="machine"  class="form-control">
+
+               <option *ngFor="let machine of machines" value="machine.value">
+                 {{machine.value}}
+               </option>
+              </select>
+    </div-->
+
+    </div>
+
+    <br>
+
+    <div class="row" style="margin : 0 ; border: solid gray 1px" >
+
+
+      
+
+
+      <div class="col" style="border-right: dotted black 1px;">
+
+        <div class="row text-center" style="font-weight:bold">
+         <hr>
+          <div class="col" >CONDITIONS D'ANALYSE & IDENTIFICATION DES ECHANTILLONS</div>
+          <hr>
+          
+        </div>
+
+         <div class="row">
+        <label for="">Nombre d'échantillons</label>
+        <div class="col-md-6"><input type="text" class="form-control"  formControlName="NbreEch" [ngClass]="{ 'is-invalid': submitted && f['NbreEch'].errors }" ></div>
+        <div *ngIf="submitted && f['NbreEch'].errors" class="invalid-feedback">
+        <div *ngIf="f['NbreEch'].errors['required']"> champ est requis  </div>
+      </div>
+    </div>
+
+   <div class="row">
+        <label for="">Nombre de répetitions si nécessaire</label>
+        <div class="col-md-6"><input type="text" class="form-control"  formControlName="repetitions"  ></div>
+    </div>
+
+    <div class="row">
+        <label for="">Nature des échantillons (bactérie , Sang , plante , ...)</label>
+        <div class="col-md-6"><input type="text" class="form-control"  formControlName="Nech" [ngClass]="{ 'is-invalid': submitted && f['Nech'].errors }" ></div>
+        <div *ngIf="submitted && f['Nech'].errors" class="invalid-feedback">
+        <div *ngIf="f['Nech'].errors['required']"> champ est requis  </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <label for="">Molécule</label>
+        <div class="col-md-6">
+            
+            <input formControlName="molecule"  type="radio" name="molecule" value="ADN"> ADN
+            <input formControlName="molecule" type="radio" name="molecule" value="ARN"> ARN
+            <input formControlName="molecule" type="radio" name="molecule" value="Proteine"> Protéine
+            <input formControlName="molecule" type="radio" name="molecule" value="Autre"> Autre
+
+        </div>
+    </div>
+
+    <div class="row">
+        <label for="">à préciser</label>
+        <div class="col-md-6"><input class="form-control" type="text"  formControlName="precision"></div>
+    </div>
+
+     <div class="row">
+        <label for="">Toxicité</label>
+        <div class="col-md-6">
+            
+            <input formControlName="toxicite"  type="radio" name="toxicite" value="T"> Toxiques
+            <input formControlName="toxicite" type="radio" name="toxicite" value="N"> Non toxiques
+
+        </div>
+
+        
+    </div>
+
+     <div class="row text-center" style="font-weight:bold">
+         <hr>
+          <div class="col" >CONDITIONS DE STOCKAGE DES ECHANTILLONS AVANT ANALYSE </div>
+          <hr>
+          
+        </div>
+
+         <div class="row">
+        <label for="">Veuillez préciser les conditions de stockage de vos échantillons , nécessaires à respecter</label>
+        <div class="col-md-6"><input class="form-control" type="text"  formControlName="conditions"[ngClass]="{ 'is-invalid': submitted && f['conditions'].errors }"
+      />
+      <div *ngIf="submitted && f['conditions'].errors" class="invalid-feedback">
+      </div>
+        </div>
+    </div>
+
+      <div class="row">
+       <label>Voulze vous récupérer le reste de stockage de vos échantillons (s'il en reste ) après l'analyse </label>
+        <div class="col-md-6">
+            
+            <input formControlName="recuperation"  type="radio"  value="oui"> Oui
+            <input formControlName="recuperation" type="radio"  value="non"> Non
+
+        </div>
+
+        
+    </div>
+
+
+
+      </div>
+
+      <div class="col">
+
+          <div class="row text-center" style="font-weight:bold ; zoom: 1.5;">
+         <hr>
+          <div class="col" > Les Actes </div>
+          
+        </div>
+
+         <div class="row" style="margin-top:10px">
+        <div>
+            <div *ngFor="let result of ActesArray">
+            <input  class="form-check-input"  type="checkbox"  [ngModel]="result.value"
+            (ngModelChange)="result.value=$event;form.get('acte')!.setValue(parse()); SumPrix($event,result.price)"
+            [ngModelOptions]="{standalone:true}"
+      />
+            {{result.name}} <p style="font-weight:bold" class="text-center">{{result.price}} Dh</p>
+
+            <!--div (change)="SumPrix(result.price)" > <div > {{SumPrice}} </div> </div-->
+            </div>
+        </div>
+
+         <div style="font-weight:bold ; float:right;">
+         <hr style="width: 50px; float: right;">
+          <div class="col" style="float: right;">Prix {{SumPrice}}  </div>
+
+          <hr style="width: 50px; float:right;">
+          
+        </div>
+    </div>
+
+     
+ 
+
+
+         
+      
+      </div>
+
+    </div>
+
+    
+
+    
+
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        formControlName="acceptTerms"
+        class="form-check-input"
+        [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }"
+      />
+      <label for="acceptTerms" class="form-check-label"
+        >J'ai lit et accepte les termes de service</label
+      >
+      <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+        vous douvez accepter les termes .
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" style="width: 140px; margin-right: 10px;">Ajouter</button>
+
+      <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-danger float-right"
+        style="width: 140px; margin-left: 10px;"
+      >
+        réinitialiser
+      </button>
+    </div>
+     <div *ngIf="success" class="alert alert-primary" role="alert">
+  Ajout Reussite ! Vous recevez un email de confirmation devis
+</div>
+  </form>
+  
+</div>
+
+
+
+       
+    </div>
+    <div class="tab-pane container fade" id="read">
+
+        <form >  
+            <div class="form-container">  
+            <h3 class="text-center">SUIVRE ETAT du DEMANDE</h3><br>
+            <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+              <br> 
+                <input type="text" name='id' id='id' placeholder="Numero de la demande" class="form-control">  
+                
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+            <br>  
+            <input type="Submit" value="chèque" class="btn btn-success btn-block">  
+            </div> 
+          </div>  
+        </div>
+      </form> 
+
+      <div class="pie animate" style="--p:10;--c:lightgreen"> 10%</div>
+       
+    </div>
+
+    <div class="tab-pane container fade" id="confirm">
+
+       <form
+      [formGroup] = "Validform"
+      (ngSubmit)="validate(Validform)"
+    >
+      <div class="form-group">
+      <input
+        type="text"
+        placeholder = "Code envoyé par email"
+        formControlName="code_v"
+        class="form-control"
+      />
+      
+    </div>
+
+
+      <div class="form-group">
+      <input
+        type="text"
+        placeholder = "Num Demande"
+        formControlName="num"
+        class="form-control"
+      />
+     
+    </div>
+
+
+      <div class="form-group" >
+        <button class="btn btn-primary btn-block" type="submit">
+         Confirmer
+        </button>
+      </div>
+
+       <div *ngIf="valid" class="alert alert-secondary" role="alert">
+  Confirmatin réussite ; demande en cours de traitement
+</div>
+
+
+     
+    </form>
+
+       
+    </div>
+
+
+    <div class="tab-pane container fade" id="delete" >
+        <form >  
+            <div class="form-container">  
+            <h3 class="text-center">SUPPRIMER DEMANDE</h3><br>
+            <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+              <br> 
+                <input type="text" name='id' id='id' placeholder="Numero de la demande" class="form-control">  
+                
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+            <br>  
+            <input type="Submit" value="Supprimer" class="btn btn-success btn-block">  
+            </div> 
+          </div>  
+        </div>
+      </form> 
+    </div>
+  </div>
+  
+
+
+
+<h2>Tous Vos Demandes</h2>
+
+
+
+
+
+<div *ngIf="demandes" > <p>  {{demandes.idClient}} </p> </div>
+
+<table class="table table-stripped">
+  
+  <thead class="text-center" >
+    <th>NUM demande</th>
+    <th>N echantillons</th>
+    <th>Type Echantillons</th>
+    <th>Rendez vous</th>
+    <th>Domaine</th>
+    <th>Machine</th>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let demande of demandes" >
+                <td> {{demande.num}} </td>
+                <td>{{demande.Tech}}</td>
+                <td>{{demande.Tech}}</td>
+                <td>{{demande.rdv}}</td>
+                <td>{{demande.domaine}}</td>
+                <td>{{demande.machine}}</td>
+         
+         </tr>
+
+  </tbody>
+</table>
+

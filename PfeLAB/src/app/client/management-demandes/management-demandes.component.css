@@ -1,0 +1,160 @@
+@import "~bootstrap/dist/css/bootstrap.css" ;
+
+.backend{
+    margin-top:8%;
+    padding: 30px;
+    border: 1px solid silver;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px silver;
+}
+.form-container{
+    padding: 30px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px 2px azure;
+}
+.error-msg{
+    color: red;
+}
+
+.nav-item{
+	font-weight: bold;
+}
+
+p {
+  font-family: Lato;
+}
+
+#root {
+  padding: 30px;
+}
+
+.register-form {
+  max-width: 1100px;
+  margin: auto;
+  padding: 5px;
+  border: solid black 2px;
+  border-radius: 10px;
+  background-image: transparent ;
+}
+
+label {
+  font-weight: bold;
+}
+
+span {
+  position: relative;
+  padding-left: 200px;
+  text-align: center;
+  font-family: "Avenir Next", sans-serif;
+  font-weight: 900;
+  font-size: 50px;
+  color: black;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+/* We create a pseudo element and blur it using the SVG filter. We’ll grab the content from the custom HTML attribute. */
+
+span:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: attr(filter-content);
+
+  filter: url(#motion-blur-filter);
+}
+
+/* We hide the SVG filter element from the DOM as it would take up some space */
+
+svg {
+  display: none;
+}
+
+
+th{
+  background-color: blue;
+  color: white;
+  border: solid black 1px;
+}
+
+td{
+  border: solid black 2px;
+}
+
+h2{
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  text-shadow: -2px 5px 10px black ;
+}
+
+@property --p{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.pie {
+  --p:20;
+  --b:22px;
+  --c:darkred;
+  --w:150px;
+  
+  width:var(--w);
+  aspect-ratio:1;
+  position:relative;
+  display:inline-grid;
+  margin:5px;
+  margin-left: 400px;
+  place-content:center;
+  font-size:25px;
+  font-weight:bold;
+  font-family:sans-serif;
+}
+.pie:before,
+.pie:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+.pie:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+          mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+.pie:after {
+  inset:calc(50% - var(--b)/2);
+  background:var(--c);
+  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+}
+.animate {
+  animation:p 1s .5s both;
+}
+.no-round:before {
+  background-size:0 0,auto;
+}
+.no-round:after {
+  content:none;
+}
+@keyframes p {
+  from{--p:0}
+}
+
+body {
+  background:#ddd;
+}
+
+select{
+-webkit-appearance: listbox !important
+}
+
+
+input[type="radio"]{
+  margin-left: 30px;
+}
+
